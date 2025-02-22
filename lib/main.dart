@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pertemuan_pertama/Screen/page_satu.dart';
+import 'package:pertemuan_pertama/Screen/page_dua.dart';
+import 'package:pertemuan_pertama/Screen/page_tiga.dart';
+import 'package:pertemuan_pertama/Screen/page_empat.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,10 +54,80 @@ class PageOne extends StatelessWidget {
         title: Text('Aplikasi Pertama',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.blueAccent,
       ),
       body: Center(
-        child: Text("Selamat Datang di Flutter App pertama MI 2B"),
+        child: Column(
+           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("Muhammad Dzaki Aryavega 2301093018 MI2B"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MaterialButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PageSatu()));
+                },
+                elevation: 18.0,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                
+                //color: Colors.blueAccent,
+                color: Color.fromARGB(209, 0, 247, 243),
+                child: Text('Tombol 1',
+                style: TextStyle(fontSize: 14, color: Colors.white),
+                ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MaterialButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PageDua()));
+                },
+                elevation: 18.0,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                
+                //color: Colors.blueAccent,
+                color: Color.fromARGB(209, 0, 247, 243),
+                child: Text('Tombol 2',
+                style: TextStyle(fontSize: 14, color: Colors.white),
+                ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MaterialButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PageTiga()));
+                },
+                elevation: 18.0,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                
+                //color: Colors.blueAccent,
+                color: Color.fromARGB(209, 0, 247, 243),
+                child: Text('Tombol 3',
+                style: TextStyle(fontSize: 14, color: Colors.white),
+                ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MaterialButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PageEmpat()));
+                },
+                elevation: 18.0,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                
+                //color: Colors.blueAccent,
+                color: Color.fromARGB(209, 0, 247, 243),
+                child: Text('Tombol 4',
+                style: TextStyle(fontSize: 14, color: Colors.white),
+                ),
+                ),
+              ),
+        
+          ],
+        )
         //child :  cuma bisa nampung 1 widget
         //children : bisa nampung beberapa widget
       ),
