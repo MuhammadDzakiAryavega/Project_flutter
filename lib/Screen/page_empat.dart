@@ -17,7 +17,7 @@ Widget build(BuildContext context) {
         children: List.generate(200, (index){
           return Card(
             child: Center(
-              child: Text("List ke ${index}"),
+              child: Text("List ke $index"),
                 ),
               );
             }
