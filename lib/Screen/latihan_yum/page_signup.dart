@@ -50,7 +50,7 @@ class SignUpScreen extends StatelessWidget {
                 _buildPasswordField("Password", passwordController),
                 _buildTextField("Email", emailController),
                 _buildTextField("Mobile Number", mobileController),
-                _buildTextField("Date of birth", dobController, hint: "DD / MM / YYYY"),
+                _buildDateField(context, "Date of Birth", dobController), // Perbaikan di sini
                 const SizedBox(height: 10),
                 const Text(
                   "By continuing, you agree to Terms of Use and Privacy Policy.",
@@ -58,7 +58,7 @@ class SignUpScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 12, color: Colors.black54),
                 ),
                 const SizedBox(height: 10),
-                _buildSignUpButton(context), // Perubahan di sini
+                _buildSignUpButton(context),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -120,6 +120,35 @@ class SignUpScreen extends StatelessWidget {
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
           suffixIcon: Icon(Icons.visibility_off),
         ),
+      ),
+    );
+  }
+
+  Widget _buildDateField(BuildContext context, String label, TextEditingController controller) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: TextField(
+        controller: controller,
+        readOnly: true,
+        decoration: InputDecoration(
+          labelText: label,
+          hintText: "DD / MM / YYYY",
+          filled: true,
+          fillColor: Colors.yellow[100],
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          suffixIcon: const Icon(Icons.calendar_today),
+        ),
+        onTap: () async {
+          DateTime? pickedDate = await showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1900),
+            lastDate: DateTime(2100),
+          );
+          if (pickedDate != null) {
+            controller.text = "${pickedDate.day} / ${pickedDate.month} / ${pickedDate.year}";
+          }
+        },
       ),
     );
   }

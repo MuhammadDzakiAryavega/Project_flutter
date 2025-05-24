@@ -31,6 +31,26 @@ class _PageRegisterState extends State<PageRegister> {
     }
   }
 
+  void showSaveDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Konfirmasi"),
+          content: Text("Data berhasil disimpan!"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,22 +67,25 @@ class _PageRegisterState extends State<PageRegister> {
                 ),
                 SizedBox(height: 15),
                 CostumeInput(
-                    labelInput: "Full Name",
-                    controller: fullname,
-                    hintText: "Muhammad Dzaki Arya Vega",
-                    textInputType: TextInputType.name),
+                  labelInput: "Full Name",
+                  controller: fullname,
+                  hintText: "Muhammad Dzaki Arya Vega",
+                  textInputType: TextInputType.name,
+                ),
                 SizedBox(height: 15),
                 CostumeInput(
-                    labelInput: "Username",
-                    controller: username,
-                    hintText: "arya",
-                    textInputType: TextInputType.name),
+                  labelInput: "Username",
+                  controller: username,
+                  hintText: "arya",
+                  textInputType: TextInputType.name,
+                ),
                 SizedBox(height: 15),
                 CostumeInput(
-                    labelInput: "Email",
-                    controller: email,
-                    hintText: "dzaki66@gmail.com",
-                    textInputType: TextInputType.emailAddress),
+                  labelInput: "Email",
+                  controller: email,
+                  hintText: "dzaki66@gmail.com",
+                  textInputType: TextInputType.emailAddress,
+                ),
                 SizedBox(height: 15),
                 CostumeInput(
                   labelInput: "Tanggal Lahir",
@@ -148,15 +171,14 @@ class _PageRegisterState extends State<PageRegister> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       if (valAgama != null && valJK != null) {
-                        //ambil input
                         inputForm = "Fullname : ${fullname.text}\n"
-                                    "Username : ${username.text}\n"
-                                    "Email : ${email.text}\n"
-                                    "Tanggal Lahir : ${tgllahir.text}\n"
-                                    "Agama : ${valAgama.toString()}\n"
-                                    "Jenis Kelamin : ${valJK.toString()}";
+                            "Username : ${username.text}\n"
+                            "Email : ${email.text}\n"
+                            "Tanggal Lahir : ${tgllahir.text}\n"
+                            "Agama : ${valAgama.toString()}\n"
+                            "Jenis Kelamin : ${valJK.toString()}";
 
-                        // Lakukan aksi penyimpanan
+                        showSaveDialog();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Silahkan pilih agama dan jenis kelamin")),
@@ -175,7 +197,7 @@ class _PageRegisterState extends State<PageRegister> {
   }
 }
 
-// Komponen CostumeInput
+/// WIDGET CostumeInput
 class CostumeInput extends StatelessWidget {
   final String labelInput;
   final TextEditingController controller;
@@ -184,8 +206,7 @@ class CostumeInput extends StatelessWidget {
   final bool obscureText;
   final VoidCallback? onTap;
 
-  const CostumeInput({
-    super.key,
+  CostumeInput({
     required this.labelInput,
     required this.controller,
     required this.hintText,
@@ -199,19 +220,15 @@ class CostumeInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(labelInput, style: TextStyle(fontSize: 18)),
-        SizedBox(height: 5),
+        Text(labelInput, style: TextStyle(fontSize: 16)),
         TextFormField(
           controller: controller,
-          validator: (val) {
-            return val!.isEmpty ? "Input tidak boleh kosong" : null;
-          },
-          decoration: InputDecoration(
-            hintText: hintText,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-          ),
           keyboardType: textInputType,
           obscureText: obscureText,
+          decoration: InputDecoration(
+            hintText: hintText,
+            border: OutlineInputBorder(),
+          ),
           onTap: onTap,
         ),
       ],
@@ -219,14 +236,13 @@ class CostumeInput extends StatelessWidget {
   }
 }
 
-// Komponen CostumeRadio
+/// WIDGET CostumeRadio
 class CostumeRadio extends StatelessWidget {
   final String value;
   final String? groupValue;
-  final ValueChanged<String> onChange;
+  final ValueChanged<String?> onChange;
 
-  const CostumeRadio({
-    super.key,
+  CostumeRadio({
     required this.value,
     required this.groupValue,
     required this.onChange,
@@ -234,30 +250,27 @@ class CostumeRadio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: RadioListTile<String>(
-        value: value,
-        groupValue: groupValue,
-        onChanged: (val) {
-          if (val != null) {
-            onChange(val);
-          }
-        },
-        title: Text(value),
-      ),
+    return Row(
+      children: [
+        Radio<String>(
+          value: value,
+          groupValue: groupValue,
+          onChanged: onChange,
+        ),
+        Text(value),
+      ],
     );
   }
 }
 
-// Komponen CostumeButton
+/// WIDGET CostumeButton
 class CostumeButton extends StatelessWidget {
   final Color bgcolor;
   final String labelButton;
   final VoidCallback onPressed;
   final Color labelColor;
 
-  const CostumeButton({
-    super.key,
+  CostumeButton({
     required this.bgcolor,
     required this.labelButton,
     required this.onPressed,
@@ -267,11 +280,8 @@ class CostumeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size(double.infinity, 50),
-        backgroundColor: bgcolor,
-      ),
       onPressed: onPressed,
+      style: ElevatedButton.styleFrom(backgroundColor: bgcolor),
       child: Text(labelButton, style: TextStyle(color: labelColor)),
     );
   }
