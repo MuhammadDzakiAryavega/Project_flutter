@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:pertemuan_pertama/Screen/list_data.dart';
-import 'package:pertemuan_pertama/Screen/nav_bar/page_tab_bar.dart';
-import 'package:pertemuan_pertama/Screen/latihan_form/page_dosen.dart';
+//import 'package:pertemuan_pertama/Screen/nav_bar/page_tab_bar.dart';
+//import 'package:pertemuan_pertama/Screen/latihan_form/page_dosen.dart';
 //import 'package:pertemuan_pertama/Screen/page_get_data.dart';
 //import 'package:pertemuan_pertama/Screen/page_notification.dart';
 //import 'package:pertemuan_pertama/Screen/page_satu.dart';
@@ -13,8 +13,13 @@ import 'package:pertemuan_pertama/Screen/latihan_form/page_dosen.dart';
 //import 'package:pertemuan_pertama/Screen/page_url_image.dart';
 //import 'package:pertemuan_pertama/Screen/page_cache.dart';
 //import 'package:pertemuan_pertama/Screen/nav_bar/page_register.dart';
-import 'package:pertemuan_pertama/Screen/latihan_form/page_data_dosen.dart';
-import 'package:pertemuan_pertama/Screen/latihan_yum/splashscreen.dart';
+//import 'package:pertemuan_pertama/Screen/latihan_form/page_data_dosen.dart';
+//import 'package:pertemuan_pertama/Screen/latihan_yum/splashscreen.dart';
+//import 'package:pertemuan_pertama/Screen/nav_bar/page_search_list.dart';
+import 'package:pertemuan_pertama/map/map_hospital.dart';
+//import 'package:pertemuan_pertama/map/map_multi_marker.dart';
+import 'package:pertemuan_pertama/map/map_page.dart';
+import 'package:pertemuan_pertama/map/map_task.dart';
 
 
 
@@ -77,17 +82,97 @@ class PageOne extends StatelessWidget {
           children: [
             Text("Muhammad Dzaki Aryavega 2301093018 MI2B"),
             
+              //Padding(
+                //padding: const EdgeInsets.all(8.0),
+                //child: MaterialButton(onPressed: (){
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => const PageTabBar()));
+                //},
+                //elevation: 18.0,
+                //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                
+                //color: Colors.blueAccent,
+                //color: Colors.blue,
+                //child: Text('Nav dan Input',
+                //style: TextStyle(fontSize: 14, color: Colors.white),
+                //),
+                //),
+              //),
+
+              //Padding(
+                //padding: const EdgeInsets.all(8.0),
+                //child: MaterialButton(onPressed: (){
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => const PageDosen()));
+                //},
+                //elevation: 18.0,
+                //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                
+                //color: Colors.blueAccent,
+                //color: Colors.blue,
+                //child: Text('Form dosen',
+                //style: TextStyle(fontSize: 14, color: Colors.white),
+                //),
+                //),
+             // ),
+
+              //Padding(
+                //adding: const EdgeInsets.all(8.0),
+                //child: MaterialButton(onPressed: (){
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => const PageDataDosen()));
+                //},
+                //elevation: 18.0,
+                //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                
+                //color: Colors.blueAccent,
+                //color: Colors.blue,
+                //child: Text('tab dosen',
+                //style: TextStyle(fontSize: 14, color: Colors.white),
+                //),
+                //),
+              //),
+
+              //Padding(
+                //padding: const EdgeInsets.all(8.0),
+                //child: MaterialButton(onPressed: (){
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => const SplashScreen()));
+                //},
+                //elevation: 18.0,
+                //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                
+                //color: Colors.blueAccent,
+                //color: Colors.blue,
+                //child: Text('Yum Quick',
+                //style: TextStyle(fontSize: 14, color: Colors.white),
+                //),
+                //),
+              //),
+
+              //Padding(
+                //padding: const EdgeInsets.all(8.0),
+                //child: MaterialButton(onPressed: (){
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => const PageSearchList()));
+                //},
+                //elevation: 18.0,
+                //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                
+                //color: Colors.blueAccent,
+                //color: Colors.blue,
+                //child: Text('Search',
+                //style: TextStyle(fontSize: 14, color: Colors.white),
+                //),
+                //),
+              //),
+
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: MaterialButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PageTabBar()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MapPage()));
                 },
                 elevation: 18.0,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 
                 //color: Colors.blueAccent,
                 color: Colors.blue,
-                child: Text('Nav dan Input',
+                child: Text('Map',
                 style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
                 ),
@@ -96,14 +181,14 @@ class PageOne extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: MaterialButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PageDosen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MapTask()));
                 },
                 elevation: 18.0,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 
                 //color: Colors.blueAccent,
                 color: Colors.blue,
-                child: Text('Form dosen',
+                child: Text('Map tugas',
                 style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
                 ),
@@ -112,34 +197,36 @@ class PageOne extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: MaterialButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PageDataDosen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MapHospital()));
                 },
                 elevation: 18.0,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 
                 //color: Colors.blueAccent,
                 color: Colors.blue,
-                child: Text('tab dosen',
+                child: Text('Map Hospital',
                 style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
                 ),
               ),
 
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MaterialButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SplashScreen()));
-                },
-                elevation: 18.0,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              //Padding(
+                //padding: const EdgeInsets.all(8.0),
+                //child: MaterialButton(onPressed: (){
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => const MapMultiMarker()));
+                //},
+                //elevation: 18.0,
+                //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 
                 //color: Colors.blueAccent,
-                color: Colors.blue,
-                child: Text('Yum Quick',
-                style: TextStyle(fontSize: 14, color: Colors.white),
-                ),
-                ),
-              ),
+                //color: Colors.blue,
+                //child: Text('Map multi maker',
+                //style: TextStyle(fontSize: 14, color: Colors.white),
+                //),
+                //),
+              //),
+
+
 
               //Padding(
                 //padding: const EdgeInsets.all(8.0),
